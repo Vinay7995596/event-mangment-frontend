@@ -1,0 +1,79 @@
+.main-bg-conteiner-login {
+    background-color: #6ACAA7;
+    height: 100vh;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-container {
+    padding: 20px;
+    background-color:#fff;
+    background-size: cover;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input-container {
+    border: 1px solid #000;
+    border-radius: 15px;
+    width: 250px;
+}
+
+.inputs {
+    border: none;
+    margin: 10px;
+    outline: none;
+    width: 220px;
+}
+
+.heading {
+    color: #6ACAA7;
+    font-size: 18px;
+    font-size: 600;
+    text-align: center;
+    padding: 0px;
+    margin: 0px;
+}
+
+.buttons-conteiner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.submit-button {
+    background-color: #0B847A;
+    color: #fff;
+    font-size: 12p;
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.signin-button {
+    color: #0B847A;
+    border: 1px solid #0B847A;
+    font-size: 12px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.error-message {
+    color: red;
+    font-size: 12px;
+    text-align: left;
+}
+
+.guest-button{
+    border: 1px solid #7a807f;
+    font-size: 12px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
