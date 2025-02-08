@@ -2,14 +2,37 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { io } from 'socket.io-client';
 import './index.css'
+import * as React from 'react';
+// import { Box } from '@mui/material';
+// import { Button } from '@mui/material';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Modal from '@mui/material/Modal';
+
 
 const socket = io('https://event-managment-hfd8.onrender.com');
+
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: 'background.paper',
+  border: '0px solid #000',
+  boxShadow: 24,
+  p: 4,
+};
 
 const Homepage = () => {
   const navigate = useNavigate();
   const [events, setEvents] = useState([]);
   const [currentEventId, setCurrentEventId] = useState(null);
   const [filter, setFilter] = useState(null);
+  const [open, setOpen] = React.useState(false);
+  // const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   useEffect(() => {
     // Fetch events whenever the filter changes
@@ -69,7 +92,12 @@ const Homepage = () => {
   };
 
   const addingButton = () => {
-    navigate('/add')
+    const isGuest = localStorage.getItem('guest')
+    if (isGuest) {
+      setOpen(true)
+    } else {
+      navigate('/add')
+    }
   }
 
   const username = localStorage.getItem('username');
@@ -96,6 +124,23 @@ const Homepage = () => {
           </button>
         </div>
       ))}
+      <div>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style} borderRadius="15px">
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            Login
+          </Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            Please Login .
+          </Typography>
+        </Box>
+      </Modal>
+    </div>
     </div>
   );
 };
